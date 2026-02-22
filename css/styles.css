@@ -511,6 +511,11 @@ p {
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
   border-radius: 4px;
   color: #ffffff;
+  outline: none;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.subscribe-input:focus {
+  border-color: #31d0aa;
 }
 .subscribe-input::placeholder {
   color: #ffffff;
@@ -531,14 +536,15 @@ p {
   cursor: pointer;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+.subscribe-btn:hover,
+.subscribe-btn:focus {
+  background-color: #31d0aa;
+}
 .subscribe-icon {
   margin-left: 16px;
   fill: #ffffff;
 }
-.subscribe-btn:hover,
-.subscribe-btn:focus {
-  background-color: #404bbf;
-}
+
 /* footer */
 
 .backdrop {
@@ -552,7 +558,17 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), 
+              visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
+}
+.backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 .popup-review {
   position: relative;
@@ -562,24 +578,35 @@ p {
   max-height: 584px;
   overflow-y: auto;
   border-radius: 4px;
-  padding: 24px;
+  padding: 72px 24px 24px 24px;
 }
 .close-popup {
   position: absolute;
   top: 24px;
   right: 24px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   line-height: 0;
   padding: 0;
   border-radius: 100%;
   fill: #2E2F42;
-  border: 1px solid rgba(46, 47, 66, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: #E7E9FC;
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
 }
 .close-popup:hover,
 .close-popup:focus {
+  background-color: #404BBF;
   stroke: #404BBF;
   fill: #FFFFFF;
+}
+.close-popup-icon {
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .leave-contacts-description {
   font-weight: 500;
@@ -611,7 +638,7 @@ height: 24px;
 display: inline-block;
 font-weight: 400;
 font-size: 12px;
-line-height: 1.16;
+line-height: 1.33;
 letter-spacing: 0.04em;
 color: #8E8F99;
 margin-bottom: 28px;
@@ -637,18 +664,29 @@ transform: translateY(-50%);
 left: 16px;
 stroke: none;
 fill: #2E2F42;
+transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .comment-field {
 border: 1px solid rgba(46, 47, 66, 0.4);
-transition: border-color 250ms ease-in;
+transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 border-radius: 4px;
 width: 360px;
 height: 120px;
+padding: 8px 16px;
 resize: none;
 font-weight: 400;
 font-size: 12px;
 line-height: 1.16667;
 letter-spacing: 0.04em;
+}
+.text-field,
+.comment-field {
+  width: 100%;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  border-radius: 4px;
+  background-color: transparent;
+  outline: transparent;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .comment-field::placeholder {
   color: rgba(46, 47, 66, 0.4);
@@ -659,6 +697,7 @@ letter-spacing: 0.04em;
   outline: none;
 }
 .privacy-link {
+  color: #4D5AE5;
   text-decoration: underline;
 }
 .privacy-link:hover,
@@ -688,18 +727,22 @@ margin-left: 110px;
   background-color: #404BBF;
   outline: none;
 }
-.text-field:focus~.form-icon {
+.text-field:focus+.form-icon {
 fill: #4D5AE5;
 }
 .custom-checkbox {
   display: inline-block;
   height: 16px;
   width: 16px;
-  transition: background-color 250ms ease-in, border-color 250ms ease-in;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  fill: none;
+  fill: transparent;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), 
+              fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .input-checkbox:focus+.terms-label .custom-checkbox {
   background-color: #4D5AE5;
@@ -709,4 +752,9 @@ fill: #4D5AE5;
 background-color: #404BBF;
 fill: #FFFFFF;
 
+}
+input[type="checkbox"]:checked + .terms-label .custom-checkbox {
+  background-color: #404bbf;
+  border: none;
+  fill: #f4f4fd;
 }
