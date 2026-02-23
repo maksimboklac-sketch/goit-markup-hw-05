@@ -583,7 +583,6 @@ p {
   position: relative;
   background-color: #fcfcfc;
   width: 408px;
-  height: 100%;
   max-height: 584px;
   overflow-y: auto;
   border-radius: 4px;
@@ -642,7 +641,7 @@ font-weight: 400;
 font-size: 12px;
 line-height: 1.16;
 letter-spacing: 0.04em;
-color: rgba(46, 47, 66, 0.4);
+color: #8e8f99;
 margin-bottom: 4px;
 width: 15px;
 height: 24px;
@@ -686,6 +685,7 @@ border-radius: 4px;
 width: 360px;
 height: 120px;
 padding: 8px 16px;
+margin-bottom: 16px;
 resize: none;
 font-weight: 400;
 font-size: 12px;
@@ -731,6 +731,7 @@ justify-content: center;
 align-items: center;
 display: block;
 margin: 0 auto;
+transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
 }
 .subscribe-title {
