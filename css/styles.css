@@ -618,7 +618,12 @@ p {
   fill: #FFFFFF;
 }
 .close-popup-icon {
+  fill: #2E2F42;
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.close-popup:hover .close-popup-icon,
+.close-popup:focus .close-popup-icon {
+  fill: #ffffff;
 }
 .leave-contacts-description {
   font-weight: 500;
@@ -721,6 +726,7 @@ letter-spacing: 0.04em;
 border-radius: 4px;
 padding: 16px 65px;
 height: 56px;
+min-width: 169px;
 background-color: #4D5AE5;
 border: none;
 color: #FFFFFF;
@@ -732,6 +738,7 @@ align-items: center;
 display: block;
 margin: 0 auto;
 transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
 }
 .subscribe-title {
